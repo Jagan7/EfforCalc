@@ -1,0 +1,2 @@
+module AddEffortHelper
+end

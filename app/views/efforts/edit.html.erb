@@ -1,0 +1,35 @@
+<h1 style="color: #747472">Editing effort</h1>
+
+<p>
+  <h3 style="color: #7ac412">Previous effort</h3>
+  <b>User:</b>
+  <%=h @userOptions2[@effort.user_id] %>
+  <b>Task:</b>
+  <%=h @taskOptions2[@effort.task_id] %>
+  <b>Task date:</b>
+  <%=h @effort.task_date %>
+</p>
+<hr />
+<h3 style="color: #aac4d2">Update effort</h3>
+<% form_for(@effort) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <label>User</label><br />
+    <%= f.select(:user_id, options_for_select(@userOptions))%>
+  </p>
+  <p>
+    <label>Task</label><br />
+    <%= f.select(:task_id, options_for_select(@taskOptions))%>
+  </p>
+  <p>
+    <label>Date</label> <br />
+   <%=date_select :taskDate, :taskDate, :start_year => 2014%>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @effort %> |
+<%= link_to 'Back', efforts_path %>

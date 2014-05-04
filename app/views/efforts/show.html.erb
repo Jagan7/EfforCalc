@@ -1,0 +1,17 @@
+<p>
+  <b>User:</b>
+  <%=h @userOptions[@effort.user_id] %>
+</p>
+
+<p>
+  <b>Task:</b>
+  <%=h @taskOptions[@effort.task_id] %>
+</p>
+
+<p>
+  <b>Task date:</b>
+  <%=h @effort.task_date %>
+</p>
+
+<%= link_to 'Edit', edit_effort_path(@effort) %> |
+<%= link_to 'Back', efforts_path %>

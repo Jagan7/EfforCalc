@@ -1,0 +1,62 @@
+<h1 style="color: #747472">Report</h1>
+<table width="100%"><tr valign="top">
+  <td>
+  <h3 style="color: #01ddaa">List of Tasks</h3>
+  <table width="90%">
+    <tr style="background-color: #127412">
+      <th style="color: white">Task</th>
+      <th style="color: white">Credits</th>
+    </tr>
+
+  <% @tasks.each do |t| %>
+    <tr>
+      <td><%=h t.task_name %></td>
+      <td style="text-align:center"><%=h t.credit %></td>
+    </tr>
+  <% end %>
+  </table>
+  </td>
+  <td>
+  <h3 style="color: #01ddaa">Credits earned</h3>
+  <table width="90%">
+    <tr style="background-color: #ff7472">
+      <th>Name</th>
+      <th>Credits</th>
+    </tr>
+
+  <% @user_points_hash.each do |key, value| %>
+    <tr>
+      <td><%=h @userOptions[key] %></td>
+      <td style="text-align:center"><%=h value %></td>
+    </tr>
+  <% end %>
+  </table>
+  </td>
+  <td>
+  <h3 style="color: #01ddaa">Tasks split</h3>
+  <table width="90%">
+    <tr style="background-color: #80dd60">
+      <th>User</th>
+      <th>Task</th>
+      <th>Count</th>
+    </tr>
+    <% p = nil %>
+  <% @efforts.each do |e| %>
+    <% v = e.user_id
+     if (p == nil || p!=v)
+       count = 1
+     else
+       count = 0
+     end %>
+
+    <tr>
+      <td><% if(count == 1) %><%=h @userOptions[e.user_id] %><%  end %></td>
+      <td><%=h @taskOptions[e.task_id] %></td>
+      <td style="text-align:center"><%=h e.task_count %></td>
+    </tr>
+    <% p=v %>
+  <% end %>
+  </table>
+  </td>
+  </tr></table>
+<%= link_to 'Back', efforts_path %>
